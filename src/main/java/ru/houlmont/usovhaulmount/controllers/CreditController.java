@@ -20,4 +20,9 @@ public class CreditController {
     @GetMapping("/addcredit")
     @ApiModelProperty(value = "добавление кредита")
     public void addCreditByID(){};
+
+
+
+
+
 }
