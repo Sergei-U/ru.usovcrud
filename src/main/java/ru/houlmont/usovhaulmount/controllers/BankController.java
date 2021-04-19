@@ -1,22 +1,21 @@
 package ru.houlmont.usovhaulmount.controllers;
 
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.houlmont.usovhaulmount.entity.Bank;
 import ru.houlmont.usovhaulmount.entity.Client;
 import ru.houlmont.usovhaulmount.entity.Credit;
-import ru.houlmont.usovhaulmount.service.CreditService;
 import ru.houlmont.usovhaulmount.service.BankService;
 import ru.houlmont.usovhaulmount.service.ClientService;
+import ru.houlmont.usovhaulmount.service.CreditService;
 
 
 /**
  *
  */
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "bank")
 @RequiredArgsConstructor
 public class BankController {
 
