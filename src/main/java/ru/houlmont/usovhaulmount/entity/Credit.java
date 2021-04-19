@@ -1,9 +1,12 @@
 package ru.houlmont.usovhaulmount.entity;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
@@ -60,7 +63,26 @@ public class Credit {
         //Этот конвертер нужно самому написать - смотри пример ниже
         private PaymentSchedule paymentSchedule;
     }
+    public class JpaJsonConverter implements AttributeConverter<Credit.PaymentSchedule, String> {
+        private static ObjectMapper objectMapper = new ObjectMapper();
 
+        @Override
+        public String convertToDatabaseColumn(Credit.PaymentSchedule paymentSchedule) {
+            try {
+                return objectMapper.writeValueAsString(credit);
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        @Override
+        public Credit.PaymentSchedule convertToEntityAttribute(String s) {
+            try {
+                return objectMapper.readValue(s, Credit.PaymentSchedule.class);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
 
 }
