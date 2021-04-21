@@ -8,6 +8,14 @@
         console.log('ho');
 
         window.addEventListener("load", function() {
+            let clientForm = document.forms["clientForm"];
+            let firstName = clientForm.elements["firstName"].value;
+            let lastName = clientForm.elements["lastName"].value;
+            let thirdName = clientForm.elements["thirdName"].value;
+            let telephoneNumber = clientForm.elements["telephoneNumber"].value;
+            let email = clientForm.elements["email"].value;
+            let serialPassport = clientForm.elements["serialPassport"].value;
+            let numberPassport = clientForm.elements["numberPassport"].value;
             document.getElementById('myForm').addEventListener("submit", function(e) {
                 e.preventDefault(); // before the code
                 /* do what you want with the form */
@@ -17,13 +25,13 @@
                 xhr.open("POST", "./client/add", true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.send(JSON.stringify({
-                    firstName: 1,
-                    lastName: 1,
-                    thirdName: 1,
-                    telephoneNumber: 1,
-                    email: 1,
-                    serialPassport: 1,
-                    numberPassport: 1,
+                    firstName: firstName,
+                    lastName: lastName,
+                    thirdName: thirdName,
+                    telephoneNumber: telephoneNumber,
+                    email: email,
+                    serialPassport: serialPassport,
+                    numberPassport: numberPassport,
                 }));
             })
         });
@@ -31,7 +39,7 @@
     <title>Страница клиента</title>
 </head>
 <body>
-<form id="myForm" method="POST">
+<form name="clientForm" id="clientForm" method="POST">
     <input type="name" name="firstName" placeholder="firstName" required>
     <input type="name" name="lastName" placeholder="lastName" required>
     <input type="name" name="thirdName" placeholder="thirdName" required>

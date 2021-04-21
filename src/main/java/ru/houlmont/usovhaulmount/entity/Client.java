@@ -53,4 +53,12 @@ public class Client {
     @OneToMany(mappedBy = "id")
     @ApiModelProperty(value = "Список кредитов клиента")
     private List<Credit> creditClientList;
+
+
+    public Client() {
+    }
+
+    public Client(UUID id) {
+        this.id = id;
+    }
 }

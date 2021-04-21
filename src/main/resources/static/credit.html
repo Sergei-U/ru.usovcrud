@@ -9,7 +9,14 @@
         console.log('ho');
 
         window.addEventListener("load", function() {
-            document.getElementById('myForm').addEventListener("submit", function(e) {
+            let creditForm = document.forms["creditForm"];
+            let creditName = creditForm.elements["creditName"].value;
+            let creditLimit = creditForm.elements["creditLimit"].value;
+            let creditValidity = creditForm.elements["creditValidity"].value;
+            let creditRate = creditForm.elements["creditRate"].value;
+            let creditStartDate = creditForm.elements["creditStartDate"].value;
+
+            document.getElementById('creditForm').addEventListener("submit", function(e) {
                 e.preventDefault(); // before the code
                 /* do what you want with the form */
 
@@ -18,11 +25,11 @@
                 xhr.open("POST", "./credit/add", true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.send(JSON.stringify({
-                    creditName: 1,
-                    creditLimit: 1,
-                    creditValidity: 1,
-                    creditRate: 1,
-                    creditStartDate: 1,
+                    creditName: creditName,
+                    creditLimit: creditLimit,
+                    creditValidity: creditValidity,
+                    creditRate: creditRate,
+                    creditStartDate: creditStartDate,
                 }));
             })
         });
@@ -30,7 +37,7 @@
 </head>
 <body>
 <div>
-    <form id="myForm" method="post">
+    <form name="creditForm" id="creditForm" method="post">
         <input type="number" name="creditName" placeholder="creditName" required>
         <input type="number" name="creditLimit" placeholder="creditLimit" required>
         <input type="number" name="creditValidity" placeholder="creditValidity" required>
