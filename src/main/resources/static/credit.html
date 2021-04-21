@@ -9,14 +9,35 @@
     <a href="index.html">home</a></div>
 </div>
     <div>
-        <form method="get">
+        <form method="POST">
             <input type="name" name="creditName" placeholder="creditName" required>
             <input type="number" name="creditLimit" placeholder="creditLimit" required>
             <input type="number" name="creditValidity" placeholder="creditValidity" required>
             <input type="number" name="creditRate" placeholder="creditRate" required>
             <input type="date" name="creditStartDate" placeholder="creditStartDate" required>
-            <button type="submit" value="Add credit" onclick="/addCredit">add credit</button>
+            <button type="submit" value="Add credit" onclick="addCredit">add credit</button>
         </form>
     </div>
+
+<div>
+    <table class="credit" method="GET">
+        <tr>
+            <th>creditName</th>
+            <th>creditLimit</th>
+            <th>creditValidity</th>
+            <th>creditRate</th>
+            <th>creditStartDate</th>
+        </tr>
+        <tr each = "credits: ${credit}">
+            <td text="${credits.creditLimit}"></td>
+            <td text="${credits.creditLimit}"></td>
+            <td text="${credits.creditValidity}"></td>
+            <td text="${credits.creditRate}"></td>
+            <td text="${credits.creditStartDate}"></td>
+
+        </tr>
+    </table>
+
+</div>
 </body>
 </html>

@@ -17,7 +17,7 @@ public class CreditController {
 
     private final CreditService creditService;
 
-    @GetMapping("/editcredit/{id}")
+    @PostMapping("/editcredit/{id}")
     @ApiOperation(value = "edit credit")
     public void editCredit(@RequestBody Credit credit) {this.creditService.editCredit(credit);}
 
@@ -30,7 +30,7 @@ public class CreditController {
     public void creditPaymentInMonth(@RequestBody Credit credit) {this.creditService.creditPaymentInMonth(credit);}
 
 
-    @GetMapping("/addnewcredit")
+    @PostMapping("/addnewcredit")
     @ApiOperation(value = "add new credit")
     public void addNewCredit(@RequestBody Credit credit) { this.creditService.addCredit(credit);}
 }

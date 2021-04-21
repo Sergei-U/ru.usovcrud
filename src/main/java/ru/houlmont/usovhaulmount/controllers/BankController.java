@@ -4,11 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.houlmont.usovhaulmount.entity.Bank;
-import ru.houlmont.usovhaulmount.entity.Client;
-import ru.houlmont.usovhaulmount.entity.Credit;
 import ru.houlmont.usovhaulmount.service.BankService;
-import ru.houlmont.usovhaulmount.service.ClientService;
-import ru.houlmont.usovhaulmount.service.CreditService;
 
 
 /**

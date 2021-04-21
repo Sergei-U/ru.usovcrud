@@ -16,7 +16,7 @@ public class ClientController {
 
     private final ClientService clientService;
 
-    @GetMapping("/addclient")
+    @PostMapping("/addclient")
     @ApiOperation(value = "add new client")
     public void addClient(@RequestBody Client client) {this.clientService.addClient(client);}
 
