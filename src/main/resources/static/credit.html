@@ -1,43 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Стреница кредита</title>
+    <title>Title</title>
+    <a href="index.html">home</a></div>
+    <a href="creditlist.html">credit list</a>
+    <script>
+        console.log('ho');
+
+        window.addEventListener("load", function() {
+            document.getElementById('myForm').addEventListener("submit", function(e) {
+                e.preventDefault(); // before the code
+                /* do what you want with the form */
+
+                // Should be triggered on form submit
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "./credit/add", true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({
+                    creditName: 1,
+                    creditLimit: 1,
+                    creditValidity: 1,
+                    creditRate: 1,
+                    creditStartDate: 1,
+                }));
+            })
+        });
+    </script>
 </head>
 <body>
 <div>
-    <a href="index.html">home</a></div>
-</div>
-    <div>
-        <form method="POST">
-            <input type="name" name="creditName" placeholder="creditName" required>
-            <input type="number" name="creditLimit" placeholder="creditLimit" required>
-            <input type="number" name="creditValidity" placeholder="creditValidity" required>
-            <input type="number" name="creditRate" placeholder="creditRate" required>
-            <input type="date" name="creditStartDate" placeholder="creditStartDate" required>
-            <button type="submit" value="Add credit" onclick="addCredit">add credit</button>
-        </form>
-    </div>
-
-<div>
-    <table class="credit" method="GET">
-        <tr>
-            <th>creditName</th>
-            <th>creditLimit</th>
-            <th>creditValidity</th>
-            <th>creditRate</th>
-            <th>creditStartDate</th>
-        </tr>
-        <tr each = "credits: ${credit}">
-            <td text="${credits.creditLimit}"></td>
-            <td text="${credits.creditLimit}"></td>
-            <td text="${credits.creditValidity}"></td>
-            <td text="${credits.creditRate}"></td>
-            <td text="${credits.creditStartDate}"></td>
-
-        </tr>
-    </table>
-
+    <form id="myForm" method="post">
+        <input type="number" name="creditName" placeholder="creditName" required>
+        <input type="number" name="creditLimit" placeholder="creditLimit" required>
+        <input type="number" name="creditValidity" placeholder="creditValidity" required>
+        <input type="number" name="creditRate" placeholder="creditRate" required>
+        <input type="date" name="creditStartDate" placeholder="creditStartDate" required>
+        <input type="submit" onsubmit="sendForm(this)" value="Add credit">
+    </form>
 </div>
 </body>
 </html>

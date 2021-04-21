@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+      <html lang="en">
+      <head>
+      <meta charset="UTF-8">
+      <title>client list</title>
+        <a href="index.html">home</a></div>
+        <a href="client.html">credit list</a>
+</head>
+<body>
+<table class = "table table-credits" method="get">
+  <tr>
+    <th> firstName </th>
+    <th> lastName </th>
+    <th> thirdName </th>
+    <th> telephoneNumber </th>
+    <th> email </th>
+    <th> serialPassport </th>
+    <th> numberPassport </th>
+
+  </tr>
+  <tr th:each="clients : ${client}">
+    <td th:text="${clients.firstName}"></td>
+    <td th:text="${clients.lastName}"></td>
+    <td th:text="${clients.thirdName}"></td>
+    <td th:text="${clients.telephoneNumber}"></td>
+    <td th:text="${clients.email}"></td>
+    <td th:text="${clients.serialPassport}"></td>
+    <td th:text="${clients.numberPassport}"></td>
+
+  </tr>
+
+</table>
+</body>

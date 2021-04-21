@@ -2,13 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <a href="index.html">home</a></div>
+    <a href="clientlist.html">client list</a></div>
+    <script>
+        console.log('ho');
+
+        window.addEventListener("load", function() {
+            document.getElementById('myForm').addEventListener("submit", function(e) {
+                e.preventDefault(); // before the code
+                /* do what you want with the form */
+
+                // Should be triggered on form submit
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "./client/add", true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({
+                    firstName: 1,
+                    lastName: 1,
+                    thirdName: 1,
+                    telephoneNumber: 1,
+                    email: 1,
+                    serialPassport: 1,
+                    numberPassport: 1,
+                }));
+            })
+        });
+    </script>
     <title>Страница клиента</title>
 </head>
 <body>
-<div>
-    <a href="index.html">home</a></div>
-</div>
-<form method="POST">
+<form id="myForm" method="POST">
     <input type="name" name="firstName" placeholder="firstName" required>
     <input type="name" name="lastName" placeholder="lastName" required>
     <input type="name" name="thirdName" placeholder="thirdName" required>
@@ -16,7 +39,7 @@
     <input type="email" name="email" placeholder="email" required>
     <input type="number" name="serialPassport" placeholder="serialPassport" required>
     <input type="number" name="numberPassport" placeholder="numberPassport" required>
-    <button type="submit" value="Add client" onclick="/addClient">Add client</button>
+    <button type="submit" onsubmit="sendForm(this)" value="Add client">add client</button>
 </form>
 
 </div>
