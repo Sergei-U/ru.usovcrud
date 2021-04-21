@@ -22,7 +22,7 @@ public class ClientController {
 
     @GetMapping("/editclient/{id}")
     @ApiOperation(value = "edit client")
-    public void editCLient(@RequestBody Client client) { this.clientService.editClient(client);}
+    public void editClient(@RequestBody Client client) { this.clientService.editClient(client);}
 
     @DeleteMapping("/deleteclient/{id}")
     @ApiOperation(value = "delete client")

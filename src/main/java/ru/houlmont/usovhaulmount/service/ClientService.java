@@ -1,7 +1,8 @@
 package ru.houlmont.usovhaulmount.service;
 
 import lombok.RequiredArgsConstructor;
-import org.jvnet.hk2.annotations.Service;
+
+import org.springframework.stereotype.Service;
 import ru.houlmont.usovhaulmount.entity.Client;
 import ru.houlmont.usovhaulmount.repository.ClientRepository;
 

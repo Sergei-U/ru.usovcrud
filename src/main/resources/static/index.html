@@ -7,11 +7,25 @@
 <body>
 <h3> The bank app</h3>
 <div>
-    <a href="/client">clients</a>
-    <a href="/credit">credit</a>
+    <a href="client.html">clients</a>
+    <a href="credit.html">credit</a>
 
 </div>
+<div>
+    <table border="1">
+        <tr>
+            <th>firstName</th>
+            <th>lastName</th>
+            <th>email</th>
+        </tr>
+        <tr each = "clients: ${client}">
+            <td text="${client.firstName}"></td>
+            <td text="${client.lastName}"></td>
+            <td text="${clients.email}"></td>
+        </tr>
+    </table>
 
+</div>
 </body>
 </html>
 
