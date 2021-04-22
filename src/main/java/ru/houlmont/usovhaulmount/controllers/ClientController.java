@@ -20,17 +20,23 @@ public class ClientController {
 
     private final ClientService clientService;
 
-    @PostMapping("/add")
+    @PostMapping("/addclient")
     @ApiOperation(value = "add new client")
-    public void addClient(@RequestBody Client client) {this.clientService.addClient(client);}
+    public void addClient(@RequestBody Client client) {
+        this.clientService.addClient(client);
+    }
 
-    @GetMapping("/editclient/{id}")
+    @GetMapping("/edit/{id}")
     @ApiOperation(value = "edit client")
-    public void editClient(@RequestBody Client client) { this.clientService.editClient(client);}
+    public void editClient(@RequestBody Client client) {
+        this.clientService.editClient(client);
+    }
 
     @DeleteMapping("/deleteclient/{id}")
     @ApiOperation(value = "delete client")
-    public void deleteClient(@RequestBody Client client) {this.clientService.deleteClient(client);}
+    public void deleteClient(@RequestBody Client client) {
+        this.clientService.deleteClient(client);
+    }
 
     @GetMapping("/clients")
     public List<Client> clients() {

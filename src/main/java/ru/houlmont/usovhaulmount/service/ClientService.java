@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import ru.houlmont.usovhaulmount.entity.Client;
 import ru.houlmont.usovhaulmount.repository.ClientRepository;
 
+import java.util.UUID;
+
 /**
  *
  */
