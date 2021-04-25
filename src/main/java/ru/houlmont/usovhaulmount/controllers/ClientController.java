@@ -34,8 +34,8 @@ public class ClientController {
 
     @DeleteMapping("/deleteclient/{id}")
     @ApiOperation(value = "delete client")
-    public void deleteClient(@RequestBody Client client) {
-        this.clientService.deleteClient(client);
+    public void deleteClient(@PathVariable String id) {
+        this.clientService.deleteClient(id);
     }
 
     @GetMapping("/clients")

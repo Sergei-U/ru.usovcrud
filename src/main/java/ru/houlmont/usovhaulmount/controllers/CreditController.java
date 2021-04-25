@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.houlmont.usovhaulmount.entity.Credit;
 import ru.houlmont.usovhaulmount.service.CreditService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class CreditController {
 
     @DeleteMapping("/deletecredit/{id}")
     @ApiOperation(value = "delete credit")
-    public void deleteCredit(@RequestBody Credit credit) {this.creditService.deleteCredit(credit);}
+    public void deleteCredit(@PathVariable String id) {this.creditService.deleteCredit(id);}
 
     @GetMapping("/creditinmonth/{id}")
     @ApiOperation(value = "credit operation in month")
@@ -39,4 +40,7 @@ public class CreditController {
     public List<Credit> creditList() {
         return creditService.creditList();
     }
+
+    @GetMapping("/creditamount")
+    public BigDecimal creditAmount(@RequestBody Credit credit) {return creditService.creditPaymentSchedule(credit);}
 }

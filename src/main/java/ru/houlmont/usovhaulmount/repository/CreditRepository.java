@@ -18,4 +18,7 @@ public interface CreditRepository extends JpaRepository<Credit, String> {
 
     @Override
     List<Credit> findAll();
+
+    @Override
+    void deleteById(String s);
 }

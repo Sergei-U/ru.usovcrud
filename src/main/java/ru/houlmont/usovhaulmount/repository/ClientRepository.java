@@ -20,4 +20,7 @@ public interface ClientRepository extends JpaRepository<Client, String> {
 
     @Override
     List<Client> findAll();
+
+    @Override
+    void deleteById(String s);
 }

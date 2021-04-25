@@ -3,8 +3,10 @@ package ru.houlmont.usovhaulmount.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.houlmont.usovhaulmount.entity.Credit;
+import ru.houlmont.usovhaulmount.entity.CreditOffer;
 import ru.houlmont.usovhaulmount.repository.CreditRepository;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import java.util.List;
 public class CreditService {
 
     private final CreditRepository creditRepository;
+    private final CreditOffer creditOffer;
 
     public void addCredit(Credit credit) {
         this.creditRepository.save(credit);
@@ -25,17 +28,19 @@ public class CreditService {
         this.creditRepository.save(credit);
     }
 
-    public void deleteCredit(Credit credit) {
-        this.creditRepository.delete(credit);
+    public void deleteCredit(String id) {
+        this.creditRepository.deleteById(id);
     }
 
 
+    /**
+     * Формула расчета аннуитетного платежа
+     * (А) представляет собой следующее соотношение: А=К*(П/(1+П)-М-1),
+     * где К – сумма кредита, П – процентная ставка, М – количество месяцев
+     * @param credit
+     */
+
     public double creditPaymentInMonth(Credit credit) {
-        /**
-         * Формула расчета аннуитетного платежа
-         * (А) представляет собой следующее соотношение: А=К*(П/(1+П)-М-1),
-         * где К – сумма кредита, П – процентная ставка, М – количество месяцев
-         */
         double k = credit.getCreditLimit();
         double p = credit.getCreditRate();
         int m = credit.getCreditValidity();
@@ -58,10 +63,17 @@ public class CreditService {
      * @return
      */
 
-    public Credit creditPaymentSchedule(Credit credit) {
-        return credit;
+    public BigDecimal creditPaymentSchedule(Credit credit) {
+
+        return creditOffer.getPaymentSchedule().getPaymentAmount();
+
     }
 
+
+    /**
+     * список всех кредитов
+     * @return
+     */
     public List<Credit> creditList() {
 
         List<Credit> credits = new ArrayList<>();
