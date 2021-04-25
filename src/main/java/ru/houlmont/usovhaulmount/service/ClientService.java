@@ -1,12 +1,12 @@
 package ru.houlmont.usovhaulmount.service;
 
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
 import ru.houlmont.usovhaulmount.entity.Client;
 import ru.houlmont.usovhaulmount.repository.ClientRepository;
 
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -29,5 +29,13 @@ public class ClientService {
 
     public void deleteClient(Client client) {
         this.clientRepository.delete(client);
+    }
+
+    public void allClient(Client client) {this.clientRepository.findAll();
+    }
+    public List<Client> clientList() {
+        List<Client> clients = new ArrayList<>();
+        clientRepository.findAll().forEach(clients::add);
+        return clients;
     }
 }

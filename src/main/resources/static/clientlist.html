@@ -3,80 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <a href="index.html">home</a></div>
-    <a href="client.html">client list</a></div>
+    <a href="client.html">client</a></div>
     <script>
 
-        window.addEventListener("load", function () {
-            let clientForm = document.forms["clientForm"];
-            let firstName = clientForm.elements["firstName"].value;
-            let lastName = clientForm.elements["lastName"].value;
-            let thirdName = clientForm.elements["thirdName"].value;
-            let telephoneNumber = clientForm.elements["telephoneNumber"].value;
-            let email = clientForm.elements["email"].value;
-            let serialPassport = clientForm.elements["serialPassport"].value;
-            let numberPassport = clientForm.elements["numberPassport"].value;
-            document.getElementById('myForm').addEventListener("submit", function (e) {
-                e.preventDefault();
 
-                // Should be triggered on form submit
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "./client/add", true);
-                xhr.setRequestHeader('Content-Type', 'application/json');
-                xhr.send(JSON.stringify({
-                    firstName: firstName,
-                    lastName: lastName,
-                    thirdName: thirdName,
-                    telephoneNumber: telephoneNumber,
-                    email: email,
-                    serialPassport: serialPassport,
-                    numberPassport: numberPassport,
-                }));
-            })
-        });
         window.onload = function () {
-            console.log("meow")
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "./client/clients", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == XMLHttpRequest.DONE) {
-                    alert(xhr.responseText);
+                    var data = JSON.parse(xhr.responseText);
+                    for(var i = 0; i < data.length; i++) {
+                        var obj = data[i];
+                        var tbodyRef = document.getElementById('client').getElementsByTagName('tbody')[0];
+                        var newRow = tbodyRef.insertRow();
+                        var newCell = newRow.insertCell();
+                        var newText = document.createTextNode(obj.id);
+                        newCell.appendChild(newText)
+                    }
                 }
             }
             xhr.send(null);
-            var tbodyRef = document.getElementById('clientTable').getElementsByTagName('tbody')[0];
-
-            var newRow = tbodyRef.insertRow();
-
-            var newCell = newRow.insertCell();
-
-            var newText = document.createTextNode('new row');
-            newCell.appendChild(newText)
         }
     </script>
     <title>Страница клиента</title>
 </head>
 <body>
-<form id="myForm" method="POST">
-    <input type="name" name="firstName" placeholder="firstName" required>
-    <input type="name" name="lastName" placeholder="lastName" required>
-    <input type="name" name="thirdName" placeholder="thirdName" required>
-    <input type="tel" name="telephoneNumber" placeholder="telephoneNumber" required>
-    <input type="email" name="email" placeholder="email" required>
-    <input type="number" name="serialPassport" placeholder="serialPassport" required>
-    <input type="number" name="numberPassport" placeholder="numberPassport" required>
-    <button type="submit" onsubmit="sendForm(this)" value="Add client">add client</button>
-</form>
-<div id="clientsTableDiv">
-    <table id="clientTable">
-        <thead>
-        <tr>
-            <th>Имя</th>
-        </tr>
-        </thead>
-        <tbody>
 
-        </tbody>
+    <table class="table table-credits">
+        <tr>
+            <th> firstName: firstName </th>
+            <th> lastName: lastName </th>
+            <th> thirdName: thirdName </th>
+            <th> telephoneNumber: telephoneNumber </th>
+            <th> email: email </th>
+            <th> serialPassport: serialPassport </th>
+            <th> numberPassport: numberPassport </th>
+        </tr>
     </table>
 
 </div>

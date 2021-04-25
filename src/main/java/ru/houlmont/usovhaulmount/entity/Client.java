@@ -2,10 +2,10 @@ package ru.houlmont.usovhaulmount.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
 
 /**
  *
@@ -15,11 +15,12 @@ import java.util.UUID;
 @Table(name = "CLIENT")
 public class Client {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id", columnDefinition = "VARCHAR(255)")
     @ApiModelProperty(value = "ID клиента")
-    private UUID id;
+    private String id;
 
 
     @Column(name = "FIRST_NAME")
@@ -36,7 +37,7 @@ public class Client {
 
     @Column(name = "TELEPHONE_NUMBER")
     @ApiModelProperty(value = "Номер телефона клиента")
-    private int telephoneNumber;
+    private Long telephoneNumber;
 
     @Column(name = "EMAIL")
     @ApiModelProperty(value = "Имя электронной почты клиента")
@@ -48,7 +49,7 @@ public class Client {
 
     @Column(name = "NUMBER_PASSPORT")
     @ApiModelProperty(value = "Номер пасспорта клиента")
-    private int numberPassport;
+    private Long numberPassport;
 
     @OneToMany(mappedBy = "id")
     @ApiModelProperty(value = "Список кредитов клиента")
@@ -58,7 +59,5 @@ public class Client {
     public Client() {
     }
 
-    public Client(UUID id) {
-        this.id = id;
-    }
+
 }

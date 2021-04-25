@@ -2,10 +2,10 @@ package ru.houlmont.usovhaulmount.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
 
 /**
  *
@@ -16,9 +16,12 @@ import java.util.UUID;
 public class Bank {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(value = "Id bank")
-    private UUID id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id", columnDefinition = "VARCHAR(255)")
+    @ApiModelProperty(value = "ID банка")
+    private String id;
+
 
 
     @OneToMany(mappedBy = "id")

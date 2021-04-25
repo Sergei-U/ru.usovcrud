@@ -2,13 +2,12 @@ package ru.houlmont.usovhaulmount.controllers;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.houlmont.usovhaulmount.entity.Client;
 import ru.houlmont.usovhaulmount.service.ClientService;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 /**
  *
@@ -18,9 +17,10 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ClientController {
 
+    @Autowired
     private final ClientService clientService;
 
-    @PostMapping("/addclient")
+    @RequestMapping(method = RequestMethod.POST, value = "/add")
     @ApiOperation(value = "add new client")
     public void addClient(@RequestBody Client client) {
         this.clientService.addClient(client);
@@ -40,16 +40,8 @@ public class ClientController {
 
     @GetMapping("/clients")
     public List<Client> clients() {
-        return Arrays.asList(
-                new Client(UUID.randomUUID()),
-                new Client(UUID.randomUUID()),
-                new Client(UUID.randomUUID()),
-                new Client(UUID.randomUUID()),
-                new Client(UUID.randomUUID()),
-                new Client(UUID.randomUUID()),
-                new Client(UUID.randomUUID())
-        );
-    }
+        return clientService.clientList(); }
+
 
 }
 

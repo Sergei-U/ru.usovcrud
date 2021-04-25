@@ -1,11 +1,12 @@
 package ru.houlmont.usovhaulmount.controllers;
 
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.houlmont.usovhaulmount.entity.Credit;
 import ru.houlmont.usovhaulmount.service.CreditService;
+
+import java.util.List;
 
 /**
  *
@@ -30,7 +31,12 @@ public class CreditController {
     public void creditPaymentInMonth(@RequestBody Credit credit) {this.creditService.creditPaymentInMonth(credit);}
 
 
-    @PostMapping("/addnewcredit")
+    @RequestMapping("/addnewcredit")
     @ApiOperation(value = "add new credit")
     public void addNewCredit(@RequestBody Credit credit) { this.creditService.addCredit(credit);}
+
+    @GetMapping("/credits")
+    public List<Credit> creditList() {
+        return creditService.creditList();
+    }
 }

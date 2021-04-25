@@ -1,16 +1,12 @@
 package ru.houlmont.usovhaulmount.entity;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.UUID;
 
 /**
  *
@@ -21,9 +17,12 @@ import java.util.UUID;
 public class Credit {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id", columnDefinition = "VARCHAR(255)")
     @ApiModelProperty(value = "ID кредита")
-    private UUID id;
+    private String id;
+
 
     @Column(name = "CREDIT_NAME")
     @ApiModelProperty(value = "Имя кредита")
@@ -42,6 +41,8 @@ public class Credit {
     private double creditRate;
 
     @Column(name = "CREDIT_START_DATE")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "Дата начала кредита")
     private Date creditStartDate;
 

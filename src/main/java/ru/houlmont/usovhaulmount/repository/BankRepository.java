@@ -11,8 +11,8 @@ import java.util.UUID;
  *
  */
 @Repository
-public interface BankRepository extends JpaRepository<Bank, UUID> {
+public interface BankRepository extends JpaRepository<Bank, String> {
 
-    Optional<Bank> findBankById(UUID uuid);
+    Optional<Bank> findBankById(String id);
 
 }

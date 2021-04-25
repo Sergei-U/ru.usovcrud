@@ -1,10 +1,12 @@
 package ru.houlmont.usovhaulmount.service;
 
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
 import ru.houlmont.usovhaulmount.entity.Credit;
 import ru.houlmont.usovhaulmount.repository.CreditRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -58,6 +60,13 @@ public class CreditService {
 
     public Credit creditPaymentSchedule(Credit credit) {
         return credit;
+    }
+
+    public List<Credit> creditList() {
+
+        List<Credit> credits = new ArrayList<>();
+        creditRepository.findAll().forEach(credits::add);
+        return credits;
     }
 }
 
