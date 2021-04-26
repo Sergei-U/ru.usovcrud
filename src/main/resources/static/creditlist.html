@@ -2,28 +2,27 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>credit list</title>
-    <a href="index.html">home</a></div>
-    <a href="credit.html">credit</a></div>
+    <title>Credit List App</title>
+    <a href="index.html">Home</a>
+    <a href="credit.html">credit</a>
 </head>
 <body>
 <table class="table table-credits">
     <tr>
-        <th> creditName</th>
-        <th> creditLimit</th>
-        <th> creditValidity</th>
-        <th> creditRate</th>
-        <th> creditStartDate</th>
+        <th>Credit name</th>
+        <th>Credit limit</th>
+        <th>Credit validity</th>
+        <th>Credit rate</th>
+        <th>Credit start date</th>
     </tr>
 
-        <tr th:each = "credits: ${credit}">
-            <td th:text="${credits.creditName}"></td>
-            <td th:text="${credits.creditLimit}"></td>
-            <td th:text="${credits.creditValidity}"></td>
-            <td th:text="${credits.creditRate}"></td>
-            <td th:text="${credits.creditStartDate}"></td>
-        </tr>
-
+    <tr th:each="credits: ${credit}">
+        <td th:text="${credits.creditName}"></td>
+        <td th:text="${credits.creditLimit}"></td>
+        <td th:text="${credits.creditValidity}"></td>
+        <td th:text="${credits.creditRate}"></td>
+        <td th:text="${credits.creditStartDate}"></td>
+    </tr>
 
 </table>
 </body>

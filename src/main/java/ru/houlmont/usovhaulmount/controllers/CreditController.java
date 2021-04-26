@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.houlmont.usovhaulmount.entity.Credit;
 import ru.houlmont.usovhaulmount.service.CreditService;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 /**
  *
  */
@@ -19,28 +16,27 @@ public class CreditController {
 
     private final CreditService creditService;
 
-    @PostMapping("/editcredit/{id}")
-    @ApiOperation(value = "edit credit")
-    public void editCredit(@RequestBody Credit credit) {this.creditService.editCredit(credit);}
+    @RequestMapping("/addnewcredit")
+    @ApiOperation(value = "add new credit")
+    public void addNewCredit(@RequestBody Credit credit) {
+        this.creditService.addCredit(credit);
+    }
 
-    @DeleteMapping("/deletecredit/{id}")
+    @PostMapping("/edit/{id}")
+    @ApiOperation(value = "edit credit")
+    public Credit editCredit(@RequestBody Credit credit) {
+        return this.creditService.editCredit(credit);
+    }
+
+    @DeleteMapping("/delete/{id}")
     @ApiOperation(value = "delete credit")
-    public void deleteCredit(@PathVariable String id) {this.creditService.deleteCredit(id);}
+    public void deleteCredit(@PathVariable String id) {
+        this.creditService.deleteCredit(id);
+    }
 
     @GetMapping("/creditinmonth/{id}")
     @ApiOperation(value = "credit operation in month")
-    public void creditPaymentInMonth(@RequestBody Credit credit) {this.creditService.creditPaymentInMonth(credit);}
-
-
-    @RequestMapping("/addnewcredit")
-    @ApiOperation(value = "add new credit")
-    public void addNewCredit(@RequestBody Credit credit) { this.creditService.addCredit(credit);}
-
-    @GetMapping("/credits")
-    public List<Credit> creditList() {
-        return creditService.creditList();
+    public void creditPaymentInMonth(@RequestBody Credit credit) {
+        this.creditService.creditPaymentInMonth(credit);
     }
-
-    @GetMapping("/creditamount")
-    public BigDecimal creditAmount(@RequestBody Credit credit) {return creditService.creditPaymentSchedule(credit);}
 }

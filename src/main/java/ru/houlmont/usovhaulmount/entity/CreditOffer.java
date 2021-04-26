@@ -8,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 /**
  *
@@ -22,22 +23,21 @@ public class CreditOffer {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "id", columnDefinition = "VARCHAR(255)")
-    private String id;
+    @Column(name = "ID", insertable = false, updatable = false)
+    private UUID id;
 
 
-    @JoinColumn(name = "ID")
-    @ManyToOne(fetch =  FetchType.LAZY)
+    @JoinColumn(name = "CLIENT_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Client client;
 
-    @JoinColumn(name = "ID")
+    @JoinColumn(name = "CREDIT_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Credit credit;
 
     @Column(name = "AMOUNT")
     private BigDecimal amount;
 
-    @Embedded
     @Convert(converter = CreditOffer.JpaJsonConverter.class)
     @Column(name = "PAYMENT_SCHEDULE")
     private PaymentSchedule paymentSchedule;

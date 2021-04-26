@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  *
@@ -19,9 +20,9 @@ public class Credit {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "id", columnDefinition = "VARCHAR(255)")
+    @Column(name = "id", insertable = false, updatable = false)
     @ApiModelProperty(value = "ID кредита")
-    private String id;
+    private UUID id;
 
 
     @Column(name = "CREDIT_NAME")

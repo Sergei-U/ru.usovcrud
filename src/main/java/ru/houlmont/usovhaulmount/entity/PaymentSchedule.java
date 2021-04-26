@@ -11,7 +11,6 @@ import java.time.LocalDate;
  */
 
 @Data
-@Embeddable
 public class PaymentSchedule {
     private LocalDate paymentDate;
     private BigDecimal paymentAmount;

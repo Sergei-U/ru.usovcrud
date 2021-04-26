@@ -1,48 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <a href="index.html">home</a></div>
-    <a href="client.html">client</a></div>
-    <script>
-
-
-        window.onload = function () {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "./client/clients", true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    var data = JSON.parse(xhr.responseText);
-                    for(var i = 0; i < data.length; i++) {
-                        var obj = data[i];
-                        var tbodyRef = document.getElementById('client').getElementsByTagName('tbody')[0];
-                        var newRow = tbodyRef.insertRow();
-                        var newCell = newRow.insertCell();
-                        var newText = document.createTextNode(obj.id);
-                        newCell.appendChild(newText)
-                    }
-                }
-            }
-            xhr.send(null);
-        }
-    </script>
-    <title>Страница клиента</title>
+    <title>Client List App</title>
+    <a href="index.html">Home</a>
+    <a href="client.html">Client</a>
 </head>
 <body>
+<table class="table table-credits">
+    <tr>
+        <th>Client firstName</th>
+        <th>Client lastName</th>
+        <th>Client thirdName</th>
+        <th>Client telephoneNumber</th>
+        <th>Client email</th>
+        <th>Client serialPassport</th>
+        <th>Client numberPassport</th>
+    </tr>
 
-    <table class="table table-credits">
-        <tr>
-            <th> firstName: firstName </th>
-            <th> lastName: lastName </th>
-            <th> thirdName: thirdName </th>
-            <th> telephoneNumber: telephoneNumber </th>
-            <th> email: email </th>
-            <th> serialPassport: serialPassport </th>
-            <th> numberPassport: numberPassport </th>
-        </tr>
-    </table>
+    <tr th:each="clients: ${client}">
+        <td th:text="${clients.firstName}"></td>
+        <td th:text="${clients.lastName}"></td>
+        <td th:text="${clients.thirdName}"></td>
+        <td th:text="${clients.telephoneNumber}"></td>
+        <td th:text="${clients.email}"></td>
+        <td th:text="${clients.serialPassport}"></td>
+        <td th:text="${clients.numberPassport}"></td>
 
-</div>
+    </tr>
+</table>
 </body>
 </html>

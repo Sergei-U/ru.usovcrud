@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -18,15 +19,10 @@ public class Bank {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "id", columnDefinition = "VARCHAR(255)")
+    @Column(name = "ID", insertable = false, updatable = false)
     @ApiModelProperty(value = "ID банка")
-    private String id;
+    private UUID id;
 
-
-
-    @OneToMany(mappedBy = "id")
-    private List<Client> clientList;
-
-    @OneToMany(mappedBy = "id")
-    private List<Credit> creditList;
+    @Column(name = "NAME")
+    private String name;
 }

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import ru.houlmont.usovhaulmount.entity.Bank;
 import ru.houlmont.usovhaulmount.repository.BankRepository;
 
+import java.util.UUID;
+
 /**
  *
  */
@@ -20,6 +22,10 @@ public class BankService {
 
     public void editBank(Bank bank) {
         this.bankRepository.save(bank);
+    }
+
+    public Bank getBank(UUID uuid) {
+        return this.bankRepository.findById(uuid).get();
     }
 
     public void deleteBank(Bank bank) {
