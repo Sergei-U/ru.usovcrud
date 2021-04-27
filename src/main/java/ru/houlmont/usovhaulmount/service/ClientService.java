@@ -7,6 +7,7 @@ import ru.houlmont.usovhaulmount.repository.ClientRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -27,7 +28,7 @@ public class ClientService {
         this.clientRepository.save(client);
     }
 
-    public void deleteClient(String id) {
+    public void deleteClient(UUID id) {
         this.clientRepository.deleteById(id);
     }
 

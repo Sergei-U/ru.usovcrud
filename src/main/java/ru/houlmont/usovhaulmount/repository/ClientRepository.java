@@ -6,15 +6,16 @@ import ru.houlmont.usovhaulmount.entity.Client;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  *
  */
 @Repository
-public interface ClientRepository extends JpaRepository<Client, String> {
+public interface ClientRepository extends JpaRepository<Client, UUID> {
 
     @Override
-    Optional<Client> findById(String id);
+    Optional<Client> findById(UUID id);
 
 
 
@@ -22,5 +23,5 @@ public interface ClientRepository extends JpaRepository<Client, String> {
     List<Client> findAll();
 
     @Override
-    void deleteById(String s);
+    void deleteById(UUID s);
 }

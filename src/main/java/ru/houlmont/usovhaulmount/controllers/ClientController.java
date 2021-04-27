@@ -12,6 +12,7 @@ import ru.houlmont.usovhaulmount.service.ClientService;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  *
@@ -36,9 +37,9 @@ public class ClientController {
         this.clientService.editClient(client);
     }
 
-    @DeleteMapping("/deleteclient/{id}")
+    @DeleteMapping("/delete/{id}")
     @ApiOperation(value = "delete client")
-    public void deleteClient(@PathVariable String id) {
+    public void deleteClient(@PathVariable UUID id) {
         this.clientService.deleteClient(id);
     }
 
