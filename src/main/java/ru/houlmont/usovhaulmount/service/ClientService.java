@@ -42,4 +42,8 @@ public class ClientService {
         clientRepository.findAll().forEach(clients::add);
         return clients;
     }
+
+    public Client getClient(UUID id) {
+        return  clientRepository.getOne(id);
+    }
 }

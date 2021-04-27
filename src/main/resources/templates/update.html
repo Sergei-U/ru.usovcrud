@@ -6,10 +6,10 @@
 </head>
 <body>
 <div class="container">
-    <h1>{{^isUpdate}}Create{{/isUpdate}}{{#isUpdate}}Update{{/isUpdate}}Employee</h1>
+    <h1>{{^isUpdate}}Create{{/isUpdate}}{{#isUpdate}}Update{{/isUpdate}}Client</h1>
     <div>
-        <form action="{{#isUpdate}}/update/{{employee.id}}{{/isUpdate}}{{^isUpdate}}/create{{/isUpdate}}"
-              name="employee" method="post">
+        <form action="{{#isUpdate}}/update/{{client.id}}{{/isUpdate}}{{^isUpdate}}/create{{/isUpdate}}"
+              name="client" method="post">
             <table class="table">
                 <tbody>
                 <thead>
@@ -26,9 +26,7 @@
                 </thead>
                 <tbody>
                 {{#isUpdate}}
-
                 <tr>
-
                     <td>ID</td>
                     <td>
                         <div name="id">{{client.id}}</div>
@@ -36,23 +34,24 @@
                 </tr>
                 {{/isUpdate}}
                 <tr>
-                    <th>Name</th>
                     <td><input type="text" name="firstName"
                                value="{{#client.firstName}}{{client.firstName}}{{/client.firstName}}" required/></td>
                     <td><input type="text" name="lastName"
-                               value="{{#client.lastName}}{{client.firstName}}{{/client.firstName}}" required/></td>
+                               value="{{#client.lastName}}{{client.lastName}}{{/client.lastName}}" required/></td>
                     <td><input type="text" name="thirdName"
                                value="{{#client.thirdName}}{{client.thirdName}}{{/client.thirdName}}" required/></td>
                     <td><input type="tel" name="tel"
-                               value="{{#client.telephoneNumber}}{{client.telephoneNumber}}{{/client.telephoneNumber}}" required/>
-                    </td>
+                               value="{{#client.telephoneNumber}}{{client.telephoneNumber}}{{/client.telephoneNumber}}"
+                               required/></td>
                     <td><input type="email" name="email"
                                value="{{#client.email}}{{client.email}}{{/client.email}}" required/></td>
                     <td><input type="number" name="serialPassport"
-                               value="{{#client.serialPassport}}{{client.serialPassport}}{{/client.serialPassport}}" required/>
+                               value="{{#client.serialPassport}}{{client.serialPassport}}{{/client.serialPassport}}"
+                               required/>
                     </td>
                     <td><input type="number" name="numberPassport"
-                               value="{{#client.numberPassport}}{{client.numberPassport}}{{/client.numberPassport}}" required/>
+                               value="{{#client.numberPassport}}{{client.numberPassport}}{{/client.numberPassport}}"
+                               required/>
                     </td>
                 </tr>
                 </tbody>

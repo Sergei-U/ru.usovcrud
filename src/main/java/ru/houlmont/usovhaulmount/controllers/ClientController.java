@@ -3,6 +3,7 @@ package ru.houlmont.usovhaulmount.controllers;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.houlmont.usovhaulmount.entity.Client;
@@ -29,18 +30,17 @@ public class ClientController {
         this.clientService.addClient(client);
     }
 
-    @GetMapping("/edit/{id}")
-    @ApiOperation(value = "edit client")
-    public void editClient(@RequestBody Client client) {
-        this.clientService.editClient(client);
-    }
+//    @GetMapping("/edit/{id}")
+//    @ApiOperation(value = "edit client")
+//    public void editClient(@RequestBody Client client) {
+//        this.clientService.editClient(client);
+//    }
 
     @RequestMapping("/delete/{id}")
     @ApiOperation(value = "delete client")
     public ModelAndView deleteClient(@PathVariable("id") UUID id, Map<String, Object> model) {
         clientService.deleteClient(id);
-        List<Client> clients = clientService.clientList();
-        return new ModelAndView( "/client", model);
+        return clientList(model);
     }
 
 
@@ -80,6 +80,13 @@ public class ClientController {
         List<Client> clients = clientService.clientList();
         model.put("client", clients);
         return new ModelAndView( "client", model);
+    }
+
+    @RequestMapping("/update/{id}")
+    public ModelAndView update(@PathVariable("id") UUID id, Map<String, Object> model ) {
+        Client client = clientService.getClient(id);
+        model.put("client", client);
+        return new ModelAndView ("update", model);
     }
 
 }

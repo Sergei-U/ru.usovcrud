@@ -4,7 +4,6 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ru.houlmont.usovhaulmount.entity.Client;
 import ru.houlmont.usovhaulmount.entity.Credit;
 import ru.houlmont.usovhaulmount.service.CreditService;
 
@@ -37,14 +36,16 @@ public class CreditController {
 
     @DeleteMapping("/delete/{id}")
     @ApiOperation(value = "delete credit")
-    public void deleteCredit(@PathVariable UUID id) {
-        this.creditService.deleteCredit(id);
+    public ModelAndView deleteCredit(@PathVariable("id") UUID id, Map<String, Object> model) {
+        creditService.deleteCredit(id);
+        return creditList(model);
+
     }
 
     @GetMapping("/creditinmonth/{id}")
     @ApiOperation(value = "credit operation in month")
-    public void creditPaymentInMonth(@RequestBody Credit credit) {
-        this.creditService.creditPaymentInMonth(credit);
+    public void creditPaymentInMonth(@PathVariable("id") UUID id) {
+        this.creditService.creditPaymentInMonth(id);
     }
 
 

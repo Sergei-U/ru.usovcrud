@@ -8,6 +8,7 @@ import ru.houlmont.usovhaulmount.repository.CreditRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -50,10 +51,11 @@ public class CreditService {
      * @param credit
      */
 
-    public double creditPaymentInMonth(Credit credit) {
-        double k = credit.getCreditLimit();
-        double p = credit.getCreditRate();
-        int m = credit.getCreditValidity();
+    public double creditPaymentInMonth(UUID id) {
+        Optional<Credit> creditById = creditRepository.findById(id);
+                double k = creditById.get().getCreditLimit();
+        double p = creditById.get().getCreditRate();
+        int m = creditById.get().getCreditValidity();
         double creditPayment = k * (p / (1 + p) - m - 1);
         return creditPayment;
     }
