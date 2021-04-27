@@ -3,11 +3,15 @@ package ru.houlmont.usovhaulmount.controllers;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import ru.houlmont.usovhaulmount.entity.Client;
+import ru.houlmont.usovhaulmount.repository.ClientRepository;
 import ru.houlmont.usovhaulmount.service.ClientService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -42,6 +46,37 @@ public class ClientController {
     public List<Client> clients() {
         return clientService.clientList(); }
 
+
+    @GetMapping
+    public ModelAndView clientList (Map<String, Object> model) {
+        List<Client> clients = clientService.allClient();
+        model.put("client", clients);
+        return new ModelAndView("client", model);
+    }
+
+    @PostMapping
+    public ModelAndView add(
+            @RequestParam String firstName,
+            @RequestParam String lastName,
+            @RequestParam String thirdName,
+            @RequestParam Long telephoneNumber,
+            @RequestParam String email,
+            @RequestParam int serialPassport,
+            @RequestParam Long numberPassport,
+            Map<String, Object> model) {
+        Client client = new Client(
+                firstName,
+                lastName,
+                thirdName,
+                telephoneNumber,
+                email,
+                serialPassport,
+                numberPassport);
+        clientService.addClient(client);
+        List<Client> clients = clientService.clientList();
+        model.put("client", clients);
+        return new ModelAndView( "client", model);
+    }
 
 }
 

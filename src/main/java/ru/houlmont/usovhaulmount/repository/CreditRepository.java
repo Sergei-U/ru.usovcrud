@@ -6,19 +6,20 @@ import ru.houlmont.usovhaulmount.entity.Credit;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  *
  */
 @Repository
-public interface CreditRepository extends JpaRepository<Credit, String> {
+public interface CreditRepository extends JpaRepository<Credit, UUID> {
 
-    @Override
-    Optional<Credit> findById(String id);
+
+    Optional<Credit> findById(UUID id);
 
     @Override
     List<Credit> findAll();
 
     @Override
-    void deleteById(String s);
+    void deleteById(UUID s);
 }

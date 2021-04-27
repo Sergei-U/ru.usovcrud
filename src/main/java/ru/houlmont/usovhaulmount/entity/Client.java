@@ -60,4 +60,14 @@ public class Client {
     }
 
 
+    public Client(String firstName, String lastName, String thirdName, Long telephoneNumber, String email, int serialPassport, Long numberPassport) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.thirdName = thirdName;
+        this.telephoneNumber = telephoneNumber;
+        this.email = email;
+        this.serialPassport = serialPassport;
+        this.numberPassport = numberPassport;
+        this.creditClientList = creditClientList;
+    }
 }

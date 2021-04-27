@@ -2,8 +2,13 @@ package ru.houlmont.usovhaulmount.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.houlmont.usovhaulmount.entity.Client;
 import ru.houlmont.usovhaulmount.entity.Credit;
 import ru.houlmont.usovhaulmount.repository.CreditRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -22,9 +27,20 @@ public class CreditService {
         return this.creditRepository.save(credit);
     }
 
-    public void deleteCredit(String id) {
+    public void deleteCredit(UUID id) {
         this.creditRepository.deleteById(id);
     }
+
+    public List<Credit> allCredit() {
+        return creditRepository.findAll();
+    }
+
+    public List<Credit> creditList () {
+        List<Credit> credits = new ArrayList<>();
+        creditRepository.findAll().forEach(credits::add);
+        return credits;
+    }
+
 
 
     /**

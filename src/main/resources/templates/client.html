@@ -1,0 +1,44 @@
+<html>
+<head> Clients</head>
+<body>
+<div>
+    <form method="post">
+        <input type="name" name="firstName" placeholder="firstName" required>
+        <input type="name" name="lastName" placeholder="lastName" required>
+        <input type="name" name="thirdName" placeholder="thirdName" required>
+        <input type="tel" name="telephoneNumber" placeholder="telephoneNumber" required>
+        <input type="email" name="email" placeholder="email" required>
+        <input type="number" name="serialPassport" placeholder="serialPassport" required>
+        <input type="number" name="numberPassport" placeholder="numberPassport" required>
+        <button type="submit">add client</button>
+    </form>
+</div>
+
+<div>Clients</div>
+    <table class="table table-credits">
+        <tr>
+            <th>Client firstName</th>
+            <th>Client lastName</th>
+            <th>Client thirdName</th>
+            <th>Client telephoneNumber</th>
+            <th>Client email</th>
+            <th>Client serialPassport</th>
+            <th>Client numberPassport</th>
+        </tr>
+        {{#client}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{firstName}}</td>
+                <td>{{lastName}}</td>
+                <td>{{thirdName}}</td>
+                <td>{{telephoneNumber}}</td>
+                <td>{{email}}</td>
+                <td>{{serialPassport}}</td>
+                <td>{{numberPassport}}</td>
+            </tr>
+        {{/client}}
+    </table>
+</body>
+</html>
+
+

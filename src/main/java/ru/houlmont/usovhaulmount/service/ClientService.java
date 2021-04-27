@@ -31,8 +31,11 @@ public class ClientService {
         this.clientRepository.deleteById(id);
     }
 
-    public void allClient(Client client) {this.clientRepository.findAll();
+    public List<Client> allClient() {
+
+        return clientRepository.findAll();
     }
+
     public List<Client> clientList() {
         List<Client> clients = new ArrayList<>();
         clientRepository.findAll().forEach(clients::add);

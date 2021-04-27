@@ -3,8 +3,15 @@ package ru.houlmont.usovhaulmount.controllers;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import ru.houlmont.usovhaulmount.entity.Client;
 import ru.houlmont.usovhaulmount.entity.Credit;
 import ru.houlmont.usovhaulmount.service.CreditService;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  *
@@ -30,7 +37,7 @@ public class CreditController {
 
     @DeleteMapping("/delete/{id}")
     @ApiOperation(value = "delete credit")
-    public void deleteCredit(@PathVariable String id) {
+    public void deleteCredit(@PathVariable UUID id) {
         this.creditService.deleteCredit(id);
     }
 
@@ -39,4 +46,34 @@ public class CreditController {
     public void creditPaymentInMonth(@RequestBody Credit credit) {
         this.creditService.creditPaymentInMonth(credit);
     }
+
+
+    @GetMapping
+    public ModelAndView creditList (Map<String, Object> model) {
+        List<Credit> credits = creditService.allCredit();
+        model.put("credit", credits);
+        return new ModelAndView("credit", model);
+    }
+
+    @PostMapping
+    public ModelAndView add(
+            @RequestParam String creditName,
+            @RequestParam int creditLimit,
+            @RequestParam int creditValidity,
+            @RequestParam double creditRate,
+            @RequestParam Date creditStartDate,
+            Map<String, Object> model) {
+        Credit credit = new Credit(
+                creditName,
+                creditLimit,
+                creditValidity,
+                creditRate,
+                creditStartDate
+                );
+        creditService.addCredit(credit);
+        List<Credit> credits = creditService.creditList();
+        model.put("client", credits);
+        return new ModelAndView( "client", model);
+    }
+
 }

@@ -47,6 +47,11 @@ public class Credit {
     @ApiModelProperty(value = "Дата начала кредита")
     private Date creditStartDate;
 
-
-
+    public Credit(String creditName, double creditLimit, int creditValidity, double creditRate, Date creditStartDate) {
+        this.creditName = creditName;
+        this.creditLimit = creditLimit;
+        this.creditValidity = creditValidity;
+        this.creditRate = creditRate;
+        this.creditStartDate = creditStartDate;
+    }
 }
