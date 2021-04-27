@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create-update-delete</title>
+</head>
+<body>
+<div class="container">
+    <h1>{{^isUpdate}}Create{{/isUpdate}}{{#isUpdate}}Update{{/isUpdate}}Employee</h1>
+    <div>
+        <form action="{{#isUpdate}}/update/{{employee.id}}{{/isUpdate}}{{^isUpdate}}/create{{/isUpdate}}"
+              name="employee" method="post">
+            <table class="table">
+                <tbody>
+                <thead>
+                <tr>
+                    <th>{{id}}</th>
+                    <th>{{firstName}}</th>
+                    <th>{{lastName}}</th>
+                    <th>{{thirdName}}</th>
+                    <th>{{telephoneNumber}}</th>
+                    <th>{{email}}</th>
+                    <th>{{serialPassport}}</th>
+                    <th>{{numberPassport}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#isUpdate}}
+
+                <tr>
+
+                    <td>ID</td>
+                    <td>
+                        <div name="id">{{client.id}}</div>
+                    </td>
+                </tr>
+                {{/isUpdate}}
+                <tr>
+                    <th>Name</th>
+                    <td><input type="text" name="firstName"
+                               value="{{#client.firstName}}{{client.firstName}}{{/client.firstName}}" required/></td>
+                    <td><input type="text" name="lastName"
+                               value="{{#client.lastName}}{{client.firstName}}{{/client.firstName}}" required/></td>
+                    <td><input type="text" name="thirdName"
+                               value="{{#client.thirdName}}{{client.thirdName}}{{/client.thirdName}}" required/></td>
+                    <td><input type="tel" name="tel"
+                               value="{{#client.telephoneNumber}}{{client.telephoneNumber}}{{/client.telephoneNumber}}" required/>
+                    </td>
+                    <td><input type="email" name="email"
+                               value="{{#client.email}}{{client.email}}{{/client.email}}" required/></td>
+                    <td><input type="number" name="serialPassport"
+                               value="{{#client.serialPassport}}{{client.serialPassport}}{{/client.serialPassport}}" required/>
+                    </td>
+                    <td><input type="number" name="numberPassport"
+                               value="{{#client.numberPassport}}{{client.numberPassport}}{{/client.numberPassport}}" required/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

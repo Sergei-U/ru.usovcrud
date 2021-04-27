@@ -17,6 +17,7 @@
 <div>Clients</div>
     <table class="table table-credits">
         <tr>
+            <th>Client id</th>
             <th>Client firstName</th>
             <th>Client lastName</th>
             <th>Client thirdName</th>
@@ -36,9 +37,9 @@
                 <td>{{serialPassport}}</td>
                 <td>{{numberPassport}}</td>
                 <td>
-                    <a href="/client/edit/{id}">Edit</a>
+                    <a href="/client/edit/{{id}}">Edit</a>
 
-                    <a href="/client/delete/{id}">Delete</a>
+                    <a href="/client/delete/{{id}}">Delete</a>
                 </td>
             </tr>
         {{/client}}

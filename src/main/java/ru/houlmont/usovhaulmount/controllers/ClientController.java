@@ -3,11 +3,9 @@ package ru.houlmont.usovhaulmount.controllers;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.houlmont.usovhaulmount.entity.Client;
-import ru.houlmont.usovhaulmount.repository.ClientRepository;
 import ru.houlmont.usovhaulmount.service.ClientService;
 
 import java.util.List;
@@ -37,11 +35,16 @@ public class ClientController {
         this.clientService.editClient(client);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @RequestMapping("/delete/{id}")
     @ApiOperation(value = "delete client")
-    public void deleteClient(@PathVariable UUID id) {
-        this.clientService.deleteClient(id);
+    public ModelAndView deleteClient(@PathVariable("id") UUID id, Map<String, Object> model) {
+        clientService.deleteClient(id);
+        List<Client> clients = clientService.clientList();
+        return new ModelAndView( "/client", model);
     }
+
+
+
 
     @GetMapping("/clients")
     public List<Client> clients() {
