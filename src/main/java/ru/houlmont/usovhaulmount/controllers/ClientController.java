@@ -24,17 +24,6 @@ public class ClientController {
     @Autowired
     private final ClientService clientService;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/add")
-    @ApiOperation(value = "add new client")
-    public void addClient(@RequestBody Client client) {
-        this.clientService.addClient(client);
-    }
-
-//    @GetMapping("/edit/{id}")
-//    @ApiOperation(value = "edit client")
-//    public void editClient(@RequestBody Client client) {
-//        this.clientService.editClient(client);
-//    }
 
     @RequestMapping("/delete/{id}")
     @ApiOperation(value = "delete client")
@@ -42,8 +31,6 @@ public class ClientController {
         clientService.deleteClient(id);
         return clientList(model);
     }
-
-
 
 
     @GetMapping("/clients")
@@ -82,11 +69,11 @@ public class ClientController {
         return new ModelAndView( "client", model);
     }
 
-    @RequestMapping("/update/{id}")
+    @RequestMapping("/clientupdate/{id}")
     public ModelAndView update(@PathVariable("id") UUID id, Map<String, Object> model ) {
         Client client = clientService.getClient(id);
-        model.put("client", client);
-        return new ModelAndView ("update", model);
+        model.put("clientupdate", client);
+        return new ModelAndView ("clientupdate", model);
     }
 
 }

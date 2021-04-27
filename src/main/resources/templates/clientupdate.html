@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update client</title>
+</head>
+<body>
+<div class="container">
+    <h1>Update client</h1>
+    <div>
+        <form method="post">
+            <table class="table">
+                <tbody>
+                <thead>
+                <tr>
+                    <th>Client firstName</th>
+                    <th>Client lastName</th>
+                    <th>Client thirdName</th>
+                    <th>Client telephoneNumber</th>
+                    <th>Client email</th>
+                    <th>Client serialPassport</th>
+                    <th>Client numberPassport</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="text" name="firstName" value="{{#client.firstName}}" required/></td>
+                    <td><input type="text" name="lastName" value="{{#client.lastName}}" required/></td>
+                    <td><input type="text" name="thirdName" value="{{#client.thirdName}}" required/></td>
+                    <td><input type="tel" name="telephoneNumber" value="{{#client.telephoneNumber}" required/></td>
+                    <td><input type="email" name="email" value="{{#client.email}}" required/></td>
+                    <td><input type="number" name="serialPassport" value="{{#client.serialPassport}}" required/></td>
+                    <td><input type="number" name="numberPassport" value="{{#client.numberPassport}}" required/></td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
