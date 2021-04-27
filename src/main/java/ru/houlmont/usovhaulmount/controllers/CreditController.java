@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import ru.houlmont.usovhaulmount.entity.Client;
 import ru.houlmont.usovhaulmount.entity.Credit;
 import ru.houlmont.usovhaulmount.service.CreditService;
 
@@ -75,6 +76,14 @@ public class CreditController {
         List<Credit> credits = creditService.creditList();
         model.put("client", credits);
         return new ModelAndView( "client", model);
+    }
+
+    @RequestMapping("/creditupdate/{id}")
+    public ModelAndView update(@PathVariable("id") UUID id, Map<String, Object> model ) {
+        Credit credit = creditService.getCredit(id);
+        model.put("creditupdate", credit);
+        model.put("isUpdate", true);
+        return new ModelAndView ("creditupdate", model);
     }
 
 }

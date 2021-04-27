@@ -48,7 +48,7 @@ public class CreditService {
      * Формула расчета аннуитетного платежа
      * (А) представляет собой следующее соотношение: А=К*(П/(1+П)-М-1),
      * где К – сумма кредита, П – процентная ставка, М – количество месяцев
-     * @param credit
+     * @param
      */
 
     public double creditPaymentInMonth(UUID id) {
@@ -58,6 +58,10 @@ public class CreditService {
         int m = creditById.get().getCreditValidity();
         double creditPayment = k * (p / (1 + p) - m - 1);
         return creditPayment;
+    }
+
+    public Credit getCredit(UUID id) {
+        return creditRepository.getOne(id);
     }
 }
 

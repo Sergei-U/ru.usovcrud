@@ -1,0 +1,52 @@
+<!doctype html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script
+          src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script
+          src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>{{^isUpdate}}Create{{/isUpdate}}{{#isUpdate}}Update{{/isUpdate}}Credit</h1>
+  <div>
+    <form action="{{isUpdate}}" method="post">
+      <table class="table">
+        <tbody>
+        <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#isUpdate}}
+        <tr>
+          <td>ID</td>
+          <td><div name="id">{{id}}</div></td>
+        </tr>
+        <tr>
+          <th>Credit creditName</th>
+          <th>Credit creditLimit</th>
+          <th>Credit creditValidity</th>
+          <th>Credit creditRate</th>
+          <th>Credit creditStartDate</th>
+        </tr>
+        {{/isUpdate}}
+        <tr>
+          <th>Credit</th>
+          <td><input type="text" name="firstName" value="{{#credit.creditName}}{{credit.creditName}}{{/credit.creditName}}" required/></td>
+          <td><input type="text" name="lastName" value="{{#credit.creditLimit}}{{credit.creditLimit}}{{/credit.creditLimit}}" required/></td>
+          <td><input type="text" name="thirdName" value="{{#credit.creditValidity}}{{credit.creditValidity}}{{/credit.creditValidity}}" required/></td>
+          <td><input type="tel" name="telephoneNumber" value="{{#credit.creditRate}}{{credit.creditRate}}{{/credit.creditRate}}" required/></td>
+          <td><input type="email" name="email" value="{{#credit.creditStartDate}}{{credit.creditStartDate}}{{/credit.creditStartDate}}" required/></td>
+        </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

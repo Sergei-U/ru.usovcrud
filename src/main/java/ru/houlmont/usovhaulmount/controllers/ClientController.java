@@ -73,6 +73,7 @@ public class ClientController {
     public ModelAndView update(@PathVariable("id") UUID id, Map<String, Object> model ) {
         Client client = clientService.getClient(id);
         model.put("clientupdate", client);
+        model.put("isUpdate", true);
         return new ModelAndView ("clientupdate", model);
     }
 
