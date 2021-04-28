@@ -9,4 +9,8 @@ import java.util.UUID;
  *
  */
 public interface CreditOfferRepository extends JpaRepository<CreditOffer, UUID> {
+
+
+    @Override
+    CreditOffer getOne(UUID uuid);
 }

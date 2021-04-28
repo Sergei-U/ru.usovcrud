@@ -43,6 +43,7 @@ public class CreditOffer {
     private PaymentSchedule paymentSchedule;
 
 
+
     public static class JpaJsonConverter implements AttributeConverter<PaymentSchedule, String> {
         private static ObjectMapper objectMapper = new ObjectMapper();
 
