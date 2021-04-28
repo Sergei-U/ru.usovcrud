@@ -11,6 +11,7 @@ import ru.houlmont.usovhaulmount.repository.CreditOfferRepository;
 import ru.houlmont.usovhaulmount.repository.CreditRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -40,11 +41,13 @@ public class CreditOfferService {
      */
 
     public void creditOfferPayment(UUID creditOfferId){
-        CreditOffer oneCreditOffer = creditOfferRepository.getOne(creditOfferId);
-        Client clientOfCreditOffer = clientRepository.getOne(oneCreditOffer.getClient().getId());
-        Credit creditOfCreditOffer = creditRepository.getOne(oneCreditOffer.getCredit().getId());
-        clientOfCreditOffer.getCreditClientList();
-        oneCreditOffer.getPaymentSchedule();
+
+        Optional<CreditOffer> oneCreditOfferByID = creditOfferRepository.findById(creditOfferId);
+
+        Optional<Client> clientOfCreditOffer = clientRepository.findById(oneCreditOfferByID.get().getClient().getId());
+        Optional<Credit> creditOfCreditOffer = creditRepository.findById(oneCreditOfferByID.get().getCredit().getId());
+        clientOfCreditOffer.get().getCreditClientList();
+        oneCreditOfferByID.get().getPaymentSchedule();
 
 
 
