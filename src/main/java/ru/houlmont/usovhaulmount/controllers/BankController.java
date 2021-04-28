@@ -19,6 +19,12 @@ public class BankController {
 
     private final BankService bankService;
 
+
+    @RequestMapping("/")
+    public void indexBank(){
+
+    }
+
     @PostMapping("/add")
     @ApiOperation(value = "Добавление нового банка")
     public void addNewBank(@RequestBody Bank bank) {

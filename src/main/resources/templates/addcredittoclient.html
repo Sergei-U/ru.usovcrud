@@ -36,15 +36,38 @@
         <td>{{email}}</td>
         <td>{{serialPassport}}</td>
         <td>{{numberPassport}}</td>
-        <td>
-            <a href="/client/addcredittoclient/{{id}}">Add credit to client</a>
-
-            <a href="/client/clientupdate/{{id}}">Edit</a>
-
-            <a href="/client/delete/{{id}}">Delete</a>
-        </td>
     </tr>
     {{/client}}
+    <div>
+        <form method="post">
+            <input type="number" name="creditName" placeholder="creditName" required>
+            <input type="number" name="creditLimit" placeholder="creditLimit" required>
+            <input type="number" name="creditValidity" placeholder="creditValidity" required>
+            <input type="number" name="creditRate" placeholder="creditRate" required>
+            <input type="date" name="creditStartDate" placeholder="creditStartDate" required>
+            <input type="submit" onsubmit="sendForm(this)" value="Add credit">
+        </form>
+    </div>
+</table>
+<div>Credits</div>
+<table class="table table-credits">
+    <tr>
+        <th>Credit creditName</th>
+        <th>Credit creditLimit</th>
+        <th>Credit creditValidity</th>
+        <th>Credit creditRate</th>
+        <th>Credit creditStartDate</th>
+    </tr>
+    {{#credit}}
+    <tr>
+        <td>{{id}}</td>
+        <td>{{creditName}}</td>
+        <td>{{creditLimit}}</td>
+        <td>{{creditValidity}}</td>
+        <td>{{creditRate}}</td>
+        <td>{{creditStartDate}}</td>
+    </tr>
+    {{/credit}}
 </table>
 </body>
 </html>

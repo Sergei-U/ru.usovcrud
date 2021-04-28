@@ -68,6 +68,5 @@ public class Client {
         this.email = email;
         this.serialPassport = serialPassport;
         this.numberPassport = numberPassport;
-        this.creditClientList = creditClientList;
     }
 }

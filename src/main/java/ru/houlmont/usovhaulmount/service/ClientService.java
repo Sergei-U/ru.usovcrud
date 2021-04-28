@@ -46,4 +46,6 @@ public class ClientService {
     public Client getClient(UUID id) {
         return  clientRepository.getOne(id);
     }
+
+
 }
