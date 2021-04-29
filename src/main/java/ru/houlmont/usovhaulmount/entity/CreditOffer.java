@@ -66,4 +66,7 @@ public class CreditOffer {
             }
         }
     }
+
+    public CreditOffer() {
+    }
 }

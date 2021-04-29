@@ -16,4 +16,7 @@ public class PaymentSchedule {
     private BigDecimal paymentAmount;
     private BigDecimal paymentBodyCredit;
     private BigDecimal paymentPercentCredit;
+
+    public PaymentSchedule() {
+    }
 }

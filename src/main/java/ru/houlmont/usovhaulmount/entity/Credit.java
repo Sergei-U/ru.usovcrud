@@ -54,4 +54,7 @@ public class Credit {
         this.creditRate = creditRate;
         this.creditStartDate = creditStartDate;
     }
+
+    public Credit() {
+    }
 }

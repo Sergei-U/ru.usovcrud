@@ -25,4 +25,7 @@ public class Bank {
 
     @Column(name = "NAME")
     private String name;
+
+    public Bank() {
+    }
 }

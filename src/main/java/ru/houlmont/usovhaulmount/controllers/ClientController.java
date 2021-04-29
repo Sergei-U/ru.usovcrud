@@ -70,6 +70,7 @@ public class ClientController {
         return new ModelAndView("client", model);
     }
 
+
     @RequestMapping("/clientupdate/{id}")
     public ModelAndView update(@PathVariable("id") UUID id,
                                @RequestParam String firstName,
